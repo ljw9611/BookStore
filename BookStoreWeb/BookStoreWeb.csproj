@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\sdk\**" />
+    <Content Remove="wwwroot\sdk\**" />
+    <EmbeddedResource Remove="wwwroot\sdk\**" />
+    <None Remove="wwwroot\sdk\**" />
+  </ItemGroup>
+<!-- 
+ItemGroup에서는 프로젝트에 사용되는 모든 패키지가 포함됩니다.  
+런타임 컴파일을 선택했기 때문에 아래의 패키지가 설치되었습니다.    
+-->
+  <ItemGroup> 
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.8" />
+  </ItemGroup>
+
+</Project>
