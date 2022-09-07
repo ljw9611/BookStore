@@ -30,9 +30,13 @@ namespace BookStoreWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            _db.Categories.Add(obj);
-            _db.SaveChanges();
-            return View();
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index"); //같은 컨트롤러에 있기 때문에 따로 컨트롤러를 지정하지 않아도 됌 // 만약 다른 컨트롤러를 리다이렉트 할 경우 RedirectToAction("Index", "컨트롤러 이름")
+            }
+            return View(obj);
         }
     }
 }
